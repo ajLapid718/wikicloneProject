@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const router = require('./routes/index.js');
 const morgan = require('morgan');
+const path = require('path');
 
 // logging middleware;
 app.use(morgan('dev'));
