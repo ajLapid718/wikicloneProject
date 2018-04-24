@@ -12,13 +12,19 @@ app.use(morgan('dev'));
 // serves up static files from some kind of public folder;
 app.use(express.static(path.join(__dirname, '/public')));
 
-// body parsing middleware;
-app.use(bodyParser);
+// body parsing middleware (from StackOverflow);
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
 
 // nunjucks configuration solution;
 const env = nunjucks.configure('views', {noCache: true});
 app.set('view engine', 'html');
 app.engine('html', nunjucks.render);
+
+// router;
+app.use(router);
 
 app.listen(3000, function() {
   console.log("Server is up and running!");
