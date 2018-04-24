@@ -3,6 +3,7 @@ const app = express();
 const router = require('./routes/index.js');
 const morgan = require('morgan');
 const path = require('path');
+const bodyParser = require('body-parser');
 
 // logging middleware;
 app.use(morgan('dev'));
@@ -10,6 +11,8 @@ app.use(morgan('dev'));
 // serves up static files from some kind of public folder;
 app.use(express.static(path.join(__dirname, '/public')));
 
+// body parsing middleware;
+app.use(bodyParser);
 
 app.listen(3000, function() {
   console.log("Server is up and running!");
