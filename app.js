@@ -14,6 +14,11 @@ app.use(express.static(path.join(__dirname, '/public')));
 // body parsing middleware;
 app.use(bodyParser);
 
+// nunjucks configuration solution;
+const env = nunjucks.configure('views', {noCache: true});
+app.set('view engine', 'html');
+app.engine('html', nunjucks.render);
+
 app.listen(3000, function() {
   console.log("Server is up and running!");
 });
