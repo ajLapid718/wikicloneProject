@@ -4,6 +4,7 @@ const router = require('./routes/index.js');
 const morgan = require('morgan');
 const path = require('path');
 const bodyParser = require('body-parser');
+const nunjucks = require('nunjucks');
 
 // logging middleware;
 app.use(morgan('dev'));
