@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const path = require('path');
 const bodyParser = require('body-parser');
 const nunjucks = require('nunjucks');
+const models = require('./models');
 
 // logging middleware;
 app.use(morgan('dev'));
@@ -26,6 +27,9 @@ app.engine('html', nunjucks.render);
 // router;
 app.use(router);
 
-app.listen(3000, function() {
+models.Page.sync()
+.then(() =>  models.User.sync())
+.then(() => app.listen(3000, function() {
   console.log("Server is up and running!");
-});
+})
+.catch(console.error.bind(console)));
