@@ -28,7 +28,7 @@ app.engine('html', nunjucks.render);
 app.use(router);
 
 // create tables and start server;
-models.db.sync()
+models.db.sync({force: true}) // {force: true} would delete all the tables;
 .then(function () {
     console.log('All tables created!');
     app.listen(3000, function () {
