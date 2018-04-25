@@ -30,5 +30,6 @@ const User = db.define('user', {
 
 module.exports = {
   Page: Page,
-  User: User
+  User: User,
+  db : db
 };

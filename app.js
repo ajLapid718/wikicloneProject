@@ -28,13 +28,9 @@ app.engine('html', nunjucks.render);
 app.use(router);
 
 // create tables and start server;
-models.User.sync()
+models.db.sync()
 .then(function () {
-    console.log('User table created!');
-    return models.Page.sync();
-})
-.then(function () {
-    console.log('Page table created!');
+    console.log('All tables created!');
     app.listen(3000, function () {
         console.log('Server is listening on port 3000!');
     });
