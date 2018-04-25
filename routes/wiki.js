@@ -30,9 +30,12 @@ router.get("/add", function(req, res, next) {
 
 router.post("/", function(req, res, next) {
   const page = Page.build({
-    title: "Lunch",
-    content: "Having lunch!"
-  })
+    title: req.body.title,
+    content: req.body.content
+  });
 
-  page.save();
+  page.save().then(function(savedPage) {
+    res.json(savedPage);
+    console.log("res json worked!");
+  });
 });
