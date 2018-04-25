@@ -24,6 +24,20 @@ router.get("/", function(req, res, next) {
   res.redirect("/");
 });
 
+router.get('/:urlTitle', function (req, res, next) {
+
+  Page.findOne({
+    where: {
+      urlTitle: req.params.urlTitle
+    }
+  })
+  .then(function(foundPage){
+    res.json(foundPage);
+  })
+  .catch(next);
+
+});
+
 router.get("/add", function(req, res, next) {
   res.render("addpage");
 });
