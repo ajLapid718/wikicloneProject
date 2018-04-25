@@ -1,5 +1,8 @@
 const Sequelize = require('sequelize');
-const db = new Sequelize('postgres://localhost:5432/wikistack');
+// connect to database and remove logging on the terminal;
+const db = new Sequelize('postgres://localhost:5432/wikistack', {
+  logging: false
+});
 
 const Page = db.define('page', {
     title: {
